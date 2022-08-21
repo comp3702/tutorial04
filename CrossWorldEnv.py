@@ -53,3 +53,15 @@ class CrossWorldEnv:
             variable: tuple(word for word in self.words if len(word) == self.length_constraints[variable])
             for variable in self.variables
         }
+
+    def check_intersect_constraints(self, assignment: dict[str, str]) -> bool:
+        only_assigned = {k: v for k, v in assignment.items() if v != ""}
+
+        for variable, assigned_value in only_assigned.items():
+            for _, first_var_index, intersecting_var, inter_var_index in self.intersect_constraints[variable]:
+                if intersecting_var in only_assigned and \
+                        assigned_value[first_var_index] != only_assigned[intersecting_var][inter_var_index]:
+                    return False
+
+        return True
+
