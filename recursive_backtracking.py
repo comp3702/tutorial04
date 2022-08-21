@@ -9,6 +9,10 @@ def recursive_backtracking(env: CrossWorldEnv, assignments: dict[str, str], expa
 
     unassigned = unassigned_variables.pop()
     for word in env.domains[unassigned]:
+        # this is missing in official solutions and will fail the 2nd test in test_recursive_backtracking
+        if word in assignments.values():
+            continue
+
         assignments[unassigned] = word
 
         if not env.check_intersect_constraints(assignments):

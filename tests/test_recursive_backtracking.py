@@ -44,3 +44,7 @@ class TestRecursiveBacktracking(unittest.TestCase):
         result, expanded = recursive_backtracking(env, assignments, 0)
         print(f"Expanded: {expanded}")
         print(result)
+        
+        # the official solution doesn't have a condition for non-repeat so both 2 and 13 get inspect
+        # although the actual solution has inquiry in 2 (see docs/investigation-crossword-puzzle-answers.pdf)
+        self.assertEqual('inquiry', result[2])
