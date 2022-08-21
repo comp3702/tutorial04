@@ -13,6 +13,7 @@ class TestRecursiveBacktracking(unittest.TestCase):
         print(f"Expanded: {expanded}")
         print(result)
 
+    # see docs/investigation-words-cross-word-puzzle.pdf
     def test_rb_hard(self):
         env = CrossWorldEnv(
             ('infer', 'observe', 'examine', 'revealed', 'inconceivable',
