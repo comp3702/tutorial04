@@ -26,3 +26,7 @@ Again, the intended use is through the unittests located in `tests` that can be 
 There's also main.py that can be used as a playground and can be run like this:
 
     python main.py
+
+The graph of the constraints is a separate file:
+
+    python graph_constraints.py
