@@ -34,17 +34,17 @@ class CrossWorldEnv:
 
         if intersect_constraints is None:
             self.intersect_constraints = {
-                "1A": (("1A", 2, "2D", 0), ("1A", 4, "3D", 0)),
-                "2D": (("2D", 0, "1A", 2), ("2D", 2, "4A", 1),
-                       ("2D", 3, "7A", 0), ("2D", 4, "8A", 2)),
-                "3D": (("3D", 0, "1A", 4), ("3D", 2, "4A", 3),
-                       ("3D", 3, "7A", 2), ("3D", 4, "8A", 4)),
-                "4A": (("4A", 1, "2D", 2), ("4A", 2, "5D", 0), ("4A", 3, "3D", 2)),
-                "5D": (("5D", 0, "4A", 2), ("5D", 1, "7A", 1), ("5D", 2, "8A", 3)),
-                "6D": (("6D", 1, "8A", 0),),
-                "7A": (("7A", 0, "2D", 3), ("7A", 1, "5D", 1), ("7A", 2, "3D", 3)),
-                "8A": (("8A", 0, "6D", 1), ("8A", 2, "2D", 4),
-                       ("8A", 3, "5D", 2), ("8A", 4, "3D", 4))
+                "1A": ((2, "2D", 0), (4, "3D", 0)),
+                "2D": ((0, "1A", 2), (2, "4A", 1),
+                       (3, "7A", 0), (4, "8A", 2)),
+                "3D": ((0, "1A", 4), (2, "4A", 3),
+                       (3, "7A", 2), (4, "8A", 4)),
+                "4A": ((1, "2D", 2), (2, "5D", 0), (3, "3D", 2)),
+                "5D": ((0, "4A", 2), (1, "7A", 1), (2, "8A", 3)),
+                "6D": ((1, "8A", 0),),
+                "7A": ((0, "2D", 3), (1, "5D", 1), (2, "3D", 3)),
+                "8A": ((0, "6D", 1), (2, "2D", 4),
+                       (3, "5D", 2), (4, "3D", 4))
             }
         else:
             self.intersect_constraints = intersect_constraints
@@ -58,7 +58,7 @@ class CrossWorldEnv:
         only_assigned = {k: v for k, v in assignment.items() if v != ""}
 
         for variable, assigned_value in only_assigned.items():
-            for _, first_var_index, intersecting_var, inter_var_index in self.intersect_constraints[variable]:
+            for first_var_index, intersecting_var, inter_var_index in self.intersect_constraints[variable]:
                 if intersecting_var in only_assigned and \
                         assigned_value[first_var_index] != only_assigned[intersecting_var][inter_var_index]:
                     return False
