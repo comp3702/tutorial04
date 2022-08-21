@@ -26,3 +26,6 @@ class TestCrossWorldEnv(unittest.TestCase):
 
         assignment = {'1A': 'LASER', '2D': 'NAILS'}
         self.assertFalse(env.check_intersect_constraints(assignment))
+
+    if __name__ == '__main__':
+        unittest.main()
