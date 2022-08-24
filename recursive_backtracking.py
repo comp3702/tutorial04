@@ -2,7 +2,7 @@ from CrossWorldEnv import CrossWorldEnv
 
 
 def recursive_backtracking(env: CrossWorldEnv, assignments: dict[str, str], expanded: int = 0) -> (dict, int):
-    unassigned_variables = {variable for variable in assignments if assignments[variable] == ""}
+    unassigned_variables = set(variable for variable in assignments if assignments[variable] == "")
 
     if len(unassigned_variables) == 0:
         return assignments, expanded
